@@ -19,11 +19,11 @@ export const consume = async () => {
   await consumer.run({
     eachMessage: async ({ topic, partition, message }) => {
       try {
-        const dataMessage = JSON.parse(message.value.toString());        
+        const dataMessage = JSON.parse(message.value.toString());
         await saveToPosts(dataMessage);
         const changedData = {
           ...dataMessage,
-          title: dataMessage.title.slice(0,6),
+          title: dataMessage.title.slice(0, 6),
           changed: true,
           contentLength: dataMessage.body.length,
         };
@@ -36,7 +36,7 @@ export const consume = async () => {
           console.log(`Produced message at ${result[0].topicName}`);
         } catch (err) {
           console.error(`Error producing message: ${err}`);
-        } 
+        }
       } catch (error) {
         console.error(`Error parsing message: ${error}`);
         console.log('Raw message:', message.value.toString());

@@ -22,15 +22,15 @@ module.exports = {
         allowNull: false,
       },
       createdAt: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
     });
   },
 
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('initialposts');
-  }
+  },
 };

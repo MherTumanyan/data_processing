@@ -1,5 +1,5 @@
-import { Model, DataTypes } from "sequelize";
-import { sequelize } from "./sequelize";
+import { Model, DataTypes } from 'sequelize';
+import { sequelize } from './sequelize';
 
 interface InitialPostsAttributes {
   id: number;
@@ -10,7 +10,10 @@ interface InitialPostsAttributes {
   updatedAt?: Date;
 }
 
-class InitialPost extends Model<InitialPostsAttributes> implements InitialPostsAttributes {
+class InitialPost
+  extends Model<InitialPostsAttributes>
+  implements InitialPostsAttributes
+{
   public id!: number;
   public userid!: number;
   public title!: string;
@@ -28,7 +31,7 @@ InitialPost.init(
     },
     userid: {
       type: DataTypes.INTEGER.UNSIGNED,
-      allowNull: false
+      allowNull: false,
     },
     title: {
       type: DataTypes.STRING(255),
@@ -40,12 +43,12 @@ InitialPost.init(
     },
   },
   {
-    tableName: "initialposts",
+    tableName: 'initialposts',
     sequelize,
     timestamps: true,
     underscored: true,
     paranoid: true,
-  }
+  },
 );
 
 export { InitialPost };
