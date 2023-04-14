@@ -1,4 +1,4 @@
 apps:
   - name: data_processing
-    script: npm run build && node dist/index.js
+    script: npx sequelize-cli db:migrate && npm run build && node dist/index.js
     instances: 2
